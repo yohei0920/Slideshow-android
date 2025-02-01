@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mImageSwitcher = (ImageSwitcher) findViewById(R.id.imageSwitcher);
+        mImageSwitcher.setInAnimation(MainActivity.this, android.R.anim.slide_in_left);
+        mImageSwitcher.setOutAnimation(MainActivity.this, android.R.anim.slide_out_right);
 
         mImageSwitcher.setFactory(new ImageSwitcher.ViewFactory() {
             @Override
