@@ -1,6 +1,9 @@
 package com.example.slideshow;
 
+import android.media.MediaParser;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     ImageSwitcher mImageSwitcher;
     private int mPosition = 0;
+
+    MediaPlayer mMediaPlayer;
 
     int[] mImageResources = {
             R.drawable.slide00,
@@ -61,6 +66,22 @@ public class MainActivity extends AppCompatActivity {
                 moveImagePosition(1);
             }
         });
+
+        mMediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.getdown);
+        mMediaPlayer.setLooping(true);
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d("===", "onResume: ");
+        super.onResume();
+        mMediaPlayer.start();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mMediaPlayer.stop();
     }
 
     private void moveImagePosition(int move) {
