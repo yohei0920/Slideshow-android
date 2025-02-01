@@ -3,6 +3,9 @@ package com.example.slideshow;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.CycleInterpolator;
+import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -20,15 +23,5 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-
-        imageView = (ImageView) findViewById(R.id.imageView);
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ViewPropertyAnimator animator = imageView.animate();
-                animator.setDuration(3000);
-                animator.rotation(360.0f * 5.0f);
-            }
-        });
     }
 }
